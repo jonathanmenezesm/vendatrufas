@@ -150,6 +150,39 @@ button:hover {
     margin-bottom: 1rem;
 }
 
+.copiar-btn {
+  margin-left: 10px;
+  padding: 6px 10px;
+  font-size: 14px;
+  background-color: #ffffff;
+  color: #4CAF50;
+  border: 1px solid #4CAF50;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.copiar-btn:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.copiado-msg {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #dff0d8;
+  color: #3c763d;
+  border: 1px solid #d6e9c6;
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: center;
+  animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; display: none; }
+}
+
 .comprovante {
     display: inline-block;
     background-color: #6d4c41;

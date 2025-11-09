@@ -19,7 +19,9 @@
 
     <div class="container">
         <label for="celular">Celular:</label>
-        <input type="text" id="celular" placeholder="Digite seu Nº de celular(ex.:21911223344)" />
+        <input type="tel" id="celular" placeholder="Digite seu número com DDD (ex: 21976322155)" maxlength="11"
+            pattern="[0-9]{11}" required />
+
 
         <label for="mes">Mês:</label><select id="mes">
             <option value="">Selecione o mês</option>
@@ -44,8 +46,12 @@
     </div>
 
     <div class="pix-banner">
-        <p>Chave Pix: 21982227469 <strong></strong></p>
-        <p>Após efetuar o pagamento, peço que envie o comprovante para o mesmo número.</p>
+        <p>
+            Chave Pix: <strong id="pix-chave">21982227469</strong>
+            <button onclick="copiarPix()" class="copiar-btn">📋 Copiar</button>
+        <div id="copiado-msg" class="copiado-msg" style="display: none;">Chave Pix copiada com sucesso!</div>
+        </p>
+        <p>Após efetuar o pagamento, envie o comprovante para o mesmo número.</p>
         <a href="https://wa.me/+5521982227469" target="_blank" class="comprovante">Clique aqui para enviar o
             comprovante.</a>
     </div>

@@ -52,3 +52,27 @@ async function consultar() {
         error.classList.add('active');
     }
 }
+
+// function copiarPix() {
+//   const chave = document.getElementById("pix-chave").innerText;
+//   navigator.clipboard.writeText(chave).then(() => {
+//     alert("Chave Pix copiada!");
+//   }).catch(() => {
+//     alert("Erro ao copiar. Tente manualmente.");
+//   });
+// }
+
+function copiarPix() {
+  const chave = document.getElementById("pix-chave").innerText;
+  navigator.clipboard.writeText(chave).then(() => {
+    const msg = document.getElementById("copiado-msg");
+    msg.style.display = "block";
+    msg.style.opacity = "1";
+
+    setTimeout(() => {
+      msg.style.display = "none";
+    }, 3000);
+  }).catch(() => {
+    document.getElementById("error").innerHTML = "Erro ao copiar. Tente manualmente.";
+  });
+}
