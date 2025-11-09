@@ -79,3 +79,11 @@ button:hover {
     font-size: 19px;
     
 }
+
+.loading {
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #4CAF50;
+  text-align: center;
+}
