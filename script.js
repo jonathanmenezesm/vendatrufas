@@ -29,10 +29,10 @@ async function consultar() {
   document.getElementById('loading').style.display = "block";
 
   // Se estiver usando Netlify Functions como proxy:
-  const url = `/.netlify/functions/proxy?celular=${celular}&mes=${mes}`;
+  // const url = `/.netlify/functions/proxy?celular=${celular}&mes=${mes}`;
 
   // Se quiser usar direto o Apps Script, substitua por:
-  // const url = `https://script.google.com/macros/s/SEU_ID/exec?celular=${celular}&mes=${mes}`;
+  const url = `https://script.google.com/macros/s/AKfycbxpa-ZCZxlrMUjiTKteQ0ETmxnlZr3iDpTH-S7TOv5mRlcXiiXz9ywP0z-MI34-R5YguA/exec?celular=${celular}&mes=${mes}`;
 
   try {
     const response = await fetch(url);
