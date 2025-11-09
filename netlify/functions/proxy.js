@@ -20,13 +20,18 @@ exports.handler = async (event, context) => {
   const celular = params.celular || '';
   const mes = params.mes || '';
 
+  console.log('Parâmetros recebidos:', { celular, mes });
+
   // Substitua pela sua URL do Apps Script se precisar
   const appsScriptUrl = `https://script.google.com/macros/s/AKfycbwDWNVy-tI15wJjK4-Y8GW5Y_B-GgWs0VPPKiY_NsnoZuUEJBo8rZlhn8Ff5dmpFaoc/exec?celular=${encodeURIComponent(celular)}&mes=${encodeURIComponent(mes)}`;
 
   try {
     // Node 18+ em Netlify Functions tem fetch global disponível
+    console.log('Fazendo fetch para Apps Script:', appsScriptUrl);
     const res = await fetch(appsScriptUrl);
+    console.log('Status da resposta do Apps Script:', res.status);
     const text = await res.text();
+    console.log('Resposta do Apps Script:', text);
 
     // Repasse do status do Apps Script não é crítico aqui; retornamos 200 com o body
     return {

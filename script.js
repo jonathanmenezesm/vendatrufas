@@ -35,8 +35,11 @@ async function consultar() {
   const url = `/.netlify/functions/proxy?celular=${celular}&mes=${mes}`;
 
   try {
+    console.log('Iniciando fetch para:', url);
     const response = await fetch(url);
+    console.log('Response status:', response.status);
     const data = await response.json();
+    console.log('Dados recebidos:', data);
 
     document.getElementById('loading').style.display = "none";
 
@@ -48,6 +51,7 @@ async function consultar() {
       document.getElementById('error').innerHTML = "Erro inesperado na resposta.";
     }
   } catch (error) {
+    console.error('Erro na consulta:', error);
     document.getElementById('loading').style.display = "none";
     document.getElementById('error').innerHTML = "Erro ao consultar, tente novamente mais tarde.";
   }
