@@ -23,7 +23,7 @@ exports.handler = async (event, context) => {
   console.log('Parâmetros recebidos:', { celular, mes });
 
   // Substitua pela sua URL do Apps Script se precisar
-  const appsScriptUrl = `https://script.google.com/macros/s/AKfycbwDWNVy-tI15wJjK4-Y8GW5Y_B-GgWs0VPPKiY_NsnoZuUEJBo8rZlhn8Ff5dmpFaoc/exec?celular=${encodeURIComponent(celular)}&mes=${encodeURIComponent(mes)}`;
+  const appsScriptUrl = `https://script.google.com/macros/s/AKfycbwYmSuxB40nV-AIcNR5HetfUzNHUA5jlpRUpmIOklFYCJN1dzoSgqnApy0JJMOD8PYpMw/exec?celular=${encodeURIComponent(celular)}&mes=${encodeURIComponent(mes)}`;
 
   try {
     // Node 18+ em Netlify Functions tem fetch global disponível

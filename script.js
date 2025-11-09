@@ -5,13 +5,11 @@ async function consultar() {
   const celular = document.getElementById('celular').value.trim();
   const mes = document.getElementById('mes').value.trim().toLowerCase();
 
-  if (!mes) {
-  document.getElementById('error').innerHTML = "Por favor, selecione um mês.";
-  return;
-  }
-
   const celularRegex = /^[0-9]{10,11}$/;
-  const mesesValidos = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+  const mesesValidos = [
+    "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+    "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+  ];
 
   if (!celular || !mes) {
     document.getElementById('error').innerHTML = "Por favor, preencha todos os campos.";
@@ -24,22 +22,21 @@ async function consultar() {
   }
 
   if (!mesesValidos.includes(mes)) {
-    document.getElementById('error').innerHTML = "Digite um mês válido (ex: novembro).";
+    document.getElementById('error').innerHTML = "Selecione um mês válido.";
     return;
   }
 
   document.getElementById('loading').style.display = "block";
 
-  // Use a função Netlify como proxy para evitar CORS
-  // A função está em netlify/functions/proxy.js e repassa a requisição ao Apps Script
+  // Se estiver usando Netlify Functions como proxy:
   const url = `/.netlify/functions/proxy?celular=${celular}&mes=${mes}`;
 
+  // Se quiser usar direto o Apps Script, substitua por:
+  // const url = `https://script.google.com/macros/s/SEU_ID/exec?celular=${celular}&mes=${mes}`;
+
   try {
-    console.log('Iniciando fetch para:', url);
     const response = await fetch(url);
-    console.log('Response status:', response.status);
     const data = await response.json();
-    console.log('Dados recebidos:', data);
 
     document.getElementById('loading').style.display = "none";
 
@@ -51,7 +48,6 @@ async function consultar() {
       document.getElementById('error').innerHTML = "Erro inesperado na resposta.";
     }
   } catch (error) {
-    console.error('Erro na consulta:', error);
     document.getElementById('loading').style.display = "none";
     document.getElementById('error').innerHTML = "Erro ao consultar, tente novamente mais tarde.";
   }
