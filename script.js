@@ -27,7 +27,7 @@ async function consultar() {
         return;
     }
 
-    const url = `https://script.google.com/macros/s/AKfycbwYmSuxB40nV-AIcNR5HetfUzNHUA5jlpRUpmIOklFYCJN1dzoSgqnApy0JJMOD8PYpMw/exec?celular=${celular}&mes=${mes}`;
+    const url = `https://script.google.com/macros/s/AKfycbxvq6pTYfcHa-jKIFI-Tt5M8a8ENnfQccWGJu3Ulx9f9gR7GaXobV9qxZm_mal4_mYJew/exec?celular=${celular}&mes=${mes}`;
 
     try {
         const response = await fetch(url);
