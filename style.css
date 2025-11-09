@@ -1,98 +1,193 @@
-*{
-    padding: 0;
+/* ===========================
+   Estilo geral
+=========================== */
+* {
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    padding: 30px;
-    margin: 0;
+    background-color: #f8f5f2;
+    color: #4e342e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
 }
-h1 {
+
+/* ===========================
+   Cabeçalho
+=========================== */
+.topo {
+    background: linear-gradient(135deg, #5d4037, #3e2723);
+    color: #fff;
     text-align: center;
-    color: #4CAF50;
+    padding: 2.5rem 1rem;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.topo h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.topo p {
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+/* ===========================
+   Container principal
+=========================== */
 .container {
-    max-width: 600px;
-    margin: 0 auto;
     background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
+    margin-top: -1.5rem;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    animation: fadeIn 0.6s ease-in;
+}
+
+/* Labels e inputs */
+label {
+    font-weight: 600;
+}
+
+input,
+select {
+    padding: 0.7rem;
+    border: 1px solid #d7ccc8;
+    border-radius: 6px;
+    outline: none;
+    transition: 0.3s;
+    font-size: 1rem;
+}
+
+input:focus,
+select:focus {
+    border-color: #8d6e63;
+    box-shadow: 0 0 5px rgba(141, 110, 99, 0.4);
+}
+
+/* Botão */
+button {
+    background-color: #6d4c41;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #8d6e63;
+}
+
+/* ===========================
+   Mensagens e resultado
+=========================== */
+
+/* Oculta as divs até que tenham conteúdo */
+.result,
+.error {
+    display: none; /* Ficam invisíveis por padrão */
+}
+
+/* Estilo normal quando ativas */
+.result.active,
+.error.active {
+    display: block;
+}
+
+
+.loading {
+    text-align: center;
+    font-weight: bold;
+    color: #6d4c41;
+}
+
+.result {
+    background-color: #f1f8e9;
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 4px solid #8bc34a;
+}
+
+.error {
+    background-color: #ffebee;
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 4px solid #e53935;
+    color: #c62828;
+}
+
+/* ===========================
+   Banner do PIX
+=========================== */
+.pix-banner {
+    margin-top: 2rem;
+    background: #fff3e0;
+    color: #4e342e;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-label {
-    font-size: 16px;
-    color: #333;
+
+.pix-banner p {
+    margin-bottom: 1rem;
 }
-input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-}
-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #4CAF50;
+
+.comprovante {
+    display: inline-block;
+    background-color: #6d4c41;
     color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-}
-button:hover {
-    background-color: #45a049;
-}
-.result {
-    margin-top: 20px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-}
-.error {
-    color: red;
-    font-weight: bold;
-}
-.pix-banner {
-    margin-top: 30px;
-    text-align: center;
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px;
-    border-radius: 4px;
-    font-size: 18px;
-}
-.pix-banner a {
-    color: #fff;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
     text-decoration: none;
-    font-weight: bold;
+    transition: 0.3s;
 }
 
 .comprovante:hover {
-    color: #ffffff;
-    text-decoration: underline;
-    font-weight: bold;
-    font-size: 19px;
-    
+    background-color: #8d6e63;
 }
 
-.loading {
-  margin-top: 15px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #4CAF50;
-  text-align: center;
+/* ===========================
+   Animações
+=========================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-select {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
+/* ===========================
+   Responsividade
+=========================== */
+@media (max-width: 500px) {
+    .topo h1 {
+        font-size: 1.6rem;
+    }
+    .container {
+        padding: 1.5rem;
+    }
 }
+
+

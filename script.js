@@ -1,20 +1,29 @@
 async function consultar() {
-    document.getElementById('result').innerHTML = "";
-    document.getElementById('error').innerHTML = "";
-    document.getElementById('loading').style.display = "block";
+    const result = document.getElementById('result');
+    const error = document.getElementById('error');
+    const loading = document.getElementById('loading');
+
+    // Limpa o conteúdo e esconde mensagens anteriores
+    result.innerHTML = "";
+    error.innerHTML = "";
+    result.classList.remove('active');
+    error.classList.remove('active');
+    loading.style.display = "block";
 
     const celular = document.getElementById('celular').value.trim();
     const mes = document.getElementById('mes').value.trim().toLowerCase();
 
     if (!mes) {
-        document.getElementById('error').innerHTML = "Por favor, selecione um mês.";
+        loading.style.display = "none";
+        error.innerHTML = "Por favor, selecione um mês.";
+        error.classList.add('active');
         return;
     }
 
-
     if (!celular || !mes) {
-        document.getElementById('error').innerHTML = "Por favor, preencha todos os campos.";
-        document.getElementById('loading').style.display = "none";
+        loading.style.display = "none";
+        error.innerHTML = "Por favor, preencha todos os campos.";
+        error.classList.add('active');
         return;
     }
 
@@ -24,17 +33,22 @@ async function consultar() {
         const response = await fetch(url);
         const data = await response.json();
 
-        document.getElementById('loading').style.display = "none";
+        loading.style.display = "none";
 
         if (data.mensagem) {
-            document.getElementById('result').innerHTML = data.mensagem;
+            result.innerHTML = data.mensagem;
+            result.classList.add('active');
         } else if (data.erro) {
-            document.getElementById('error').innerHTML = data.erro;
+            error.innerHTML = data.erro;
+            error.classList.add('active');
         } else {
-            document.getElementById('error').innerHTML = "Erro inesperado na resposta.";
+            error.innerHTML = "Erro inesperado na resposta.";
+            error.classList.add('active');
         }
-    } catch (error) {
-        document.getElementById('loading').style.display = "none";
-        document.getElementById('error').innerHTML = "Erro ao consultar, tente novamente mais tarde.";
+
+    } catch (e) {
+        loading.style.display = "none";
+        error.innerHTML = "Erro ao consultar, tente novamente mais tarde.";
+        error.classList.add('active');
     }
 }
